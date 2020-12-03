@@ -2,6 +2,7 @@
 const express = require("express");
 const morgan = require("morgan");
 const fortuneCookie = require("fortune-cookie");
+const cors = require('cors');
 
 const cookies = () => {
     const idx = Math.floor(Math.random() * fortuneCookie.length);
@@ -16,6 +17,7 @@ const app = express();
 
 //use morgan to log all request. Use the combined format
 app.use(morgan('combined'))
+app.use(cors())
 
 //resources
 
@@ -37,15 +39,8 @@ app.get('/api/cookie', (req,res)=>{
     // res.send({'cookie': fortuneCookie})
 })
 
-// app.get('/api/cookie/:count', (req,res)=>{
-//     res.status(200)
-//     res.type('application/json')
-//     let array = [];
-//     for(let i=0;i<req.params.count;i++){
-//         array.push(fortuneCookie[i])
-//     }
-//     res.send({'cookie': array})
-// })
+// serve frontend 
+app.use(express.static(__dirname + '/frontend'))
 
 //start the server
 app.listen(PORT, ()=>{

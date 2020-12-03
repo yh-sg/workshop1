@@ -1,0 +1,40 @@
+<!-- <div class="container">
+
+  <div class="row">
+    <div class="col">
+      <button>1</button>
+    </div>
+    <div class="col">
+      <button>2</button>  
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col">
+      <button>3</button>  
+    </div>
+  </div>
+
+</div> -->
+
+
+<div class="container">
+  <h1>Fortune Cookie</h1>
+  <form [formGroup]="form" (ngSubmit)="getCookie()">
+    <label for="numCookies">Number of cookies: </label>
+      <select id="numCookies" formControlName="cookieCount" class="form-control">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+  
+    <button class="btn btn-outline-success mt-2">Get Cookies</button>
+
+  </form>
+  <h2 *ngFor="let c of cookies">
+    {{c.cookie}}
+  </h2>
+  
+</div>
